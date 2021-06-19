@@ -1,0 +1,63 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devices Sensors</title>
+</head>
+<body>
+
+    <p id='demo'></p>
+    <button id="btn">Allow Motion and Orientation Access</button>
+
+    <script src="script.js"></script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="user-scalable=no, 
+            initial-scale=1, maximum-scale=1, 
+            minimum-scale=1, width=device-width;" />
+  
+      <title>Accelerometer Data</title>
+
+      <script type="text/javascript" 
+               src="cordova-2.0.0.js"></script>
+
+  <!-- Add PhoneGap script here -->
+
+  </head>
+  <body>
+
+    <h1>Accelerometer Data</h1>
+
+    <div id="accelerometerData">Obtaining data...</div>
+    <script type="text/javascript">
+
+        // Set the event listener to run 
+        // when the device is ready
+        document.addEventListener("deviceready", onDeviceReady, false);
+            
+        function onDeviceReady() {
+            navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
+        }
+        function onSuccess(acceleration) {
+            let accElement = document.getElementById('accelerometerData');
+
+            accElement.innerHTML  =  
+            'Acceleration X: ' + acceleration.x + '<br />' +
+            'Acceleration Y: ' + acceleration.y + '<br />' +
+            'Acceleration Z: ' + acceleration.z + '<br />' +
+            'Timestamp: '      + acceleration.timestamp;
+        }
+        function onError(error) {
+        // Handle any errors we may face
+            alert('error');
+        }
+            
+      </script>
+  </body>
+</html>
